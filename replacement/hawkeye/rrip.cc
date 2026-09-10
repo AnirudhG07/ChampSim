@@ -20,12 +20,11 @@ void update_rrpv(std::vector<int>& rrpv, std::size_t way, Classification cls, bo
     for (size_t i = 0; i < rrpv.size(); i++)
       if (rrpv[i] < 6)
         rrpv[i]++;
+    rrpv[way] = 0; // set 0 for that way
+  } else {
+    rrpv[way] = 0; // set 0 for hit
   }
-
-  // this takes care of 2 cases, first cache hit case
-  // secondly, in cache miss case, the rrip of the new line should be 0
-  // so setting its value later will take care of that. :-) 
-  rrpv[way] = 0;
+  return;
 }
 
 size_t find_victim(std::vector<int>& rrpv)
@@ -34,15 +33,17 @@ size_t find_victim(std::vector<int>& rrpv)
     return 0; // No ways to choose from
   }
 
+  // loop till you find a victim
   while (true) {
     for (size_t i = 0; i < rrpv.size(); i++) {
       if (rrpv[i] == 7) {
         return i; // Any way with rrpv = 7 will work
       }
-      // age all lines, mentioned in assignment
-      for (size_t i = 0; i < rrpv.size(); i++) {
-        rrpv[i]++;
-      }
+    }
+
+    // age all lines, mentioned in assignment
+    for (size_t i = 0; i < rrpv.size(); i++) {
+      rrpv[i]++;
     }
   }
 }

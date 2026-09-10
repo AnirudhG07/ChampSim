@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
+#include <vector>
 
 class HawkeyePredictor
 {
@@ -17,6 +18,16 @@ public:
   bool predict(uint64_t pc) const;
   // Debug-only accessor: raw counter value in [0, 2^counter_bits - 1].
   int get_counter(uint64_t pc) const;
+
+private:
+  std::size_t n_entries; // size of the PC-indexed table
+  int max_counter; // 2^counter_bits - 1
+  int init_counter; // 4(as given)
+  std::vector<int> predictor_table; // PC-indexed table of saturating counters 
+
+  // hash function private 
+  std::uint64_t hash_pc(std::uint64_t pc) const;
+
 };
 
 #endif
