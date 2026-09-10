@@ -15,5 +15,5 @@ void HawkeyePredictor::train(uint64_t pc, bool opt_hit){
 bool HawkeyePredictor::predict(uint64_t pc) const{};
 
 int HawkeyePredictor::get_counter(uint64_t pc) const{
-
+    
 };
