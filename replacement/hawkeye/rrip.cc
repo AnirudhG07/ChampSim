@@ -34,16 +34,38 @@ size_t find_victim(std::vector<int>& rrpv)
   }
 
   // loop till you find a victim
-  while (true) {
-    for (size_t i = 0; i < rrpv.size(); i++) {
-      if (rrpv[i] == 7) {
-        return i; // Any way with rrpv = 7 will work
-      }
-    }
+  //
+  // If we want to find the maximum RRIP if no 7 is found(mentioned in paper)
+  // int max_rrpv = rrpv[0];
+  // int idx = 0;
+  // for (size_t i = 0; i < rrpv.size(); i++) {
+  //   if (rrpv[i] > max_rrpv) {
+  //     max_rrpv = rrpv[i];
+  //     idx = i;
+  //   }
+  //   if (rrpv[i] == 7) {
+  //     return i; // Any way with rrpv = 7 will work
+  //   }
+  // }
+  // return idx;
 
-    // age all lines, mentioned in assignment
-    for (size_t i = 0; i < rrpv.size(); i++) {
-      rrpv[i]++;
+  // Age all lines directly by the distance between the maximum and 7.
+  // find maximum RRPV value and its index
+  int max_rrpv = rrpv[0];
+  size_t victim = 0;
+  for (size_t i = 1; i < rrpv.size(); i++) {
+    if (rrpv[i] > max_rrpv) {
+      max_rrpv = rrpv[i];
+      victim = i;
     }
   }
+
+  const int distance = 7 - max_rrpv;
+  if (distance > 0) {
+    for (size_t i = 0; i < rrpv.size(); i++) {
+      rrpv[i] += distance;
+    }
+  }
+
+  return victim;
 }

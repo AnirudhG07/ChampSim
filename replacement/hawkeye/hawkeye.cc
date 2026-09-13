@@ -2,7 +2,77 @@
 #include "hawkeye.h"
 
 #include <algorithm>
+
+#include "cache.h"
 // TODO: implement find_victim / replacement_cache_fill / update_replacement_state here, delegating to optgen / predictor / rrip.h as described in hawkeye.h
 // above.
 
-hawkeye::hawkeye(CACHE* cache) : replacement(cache) {}
+hawkeye::hawkeye(CACHE* cache) : hawkeye(cache, cache->NUM_SET, cache->NUM_WAY) {}
+
+hawkeye::hawkeye(CACHE* cache, size_t sets, size_t ways) : replacement(cache), NUM_WAYS(ways), rrpv(sets, vector<int>(ways, 7)), predictor(), optgen(sets, ways)
+{
+}
+
+/*
+Parameter meanings (from inc/cache.h's dispatch):
+- triggering_cpu: index of the core whose access caused this call; always 0 in single-core runs
+- instr_id:       unique id of the instruction that generated the access, used for ordering and debug
+- set:            index of the cache set being accessed
+- way:            index of the way within that set (the line being filled or hit)
+- current_set:    pointer to way 0 of this set; the NUM_WAY blocks are contiguous, so you can scan them for invalid ways
+- ip:             PC of the instruction that caused the access -> this is what feeds the predictor
+- full_addr:      full byte address of the access -> convert to a block address before giving it to OPTgen
+- victim_addr:    address of the line being evicted; empty (champsim::address{}) when hit is true
+- type:           LOAD / RFO / PREFETCH / WRITE / TRANSLATION
+- hit:            whether this access hit in the cache
+*/
+
+long hawkeye::find_victim(uint64_t triggering_cpu, uint64_t instr_id, size_t set, const champsim::cache_block* current_set, champsim::address ip,
+                          champsim::address full_addr, access_type type)
+{
+  // find initial victim from rrpv for that set
+  size_t victim_way = ::find_victim(rrpv[set]);
+  return static_cast<long>(victim_way);
+}
+
+void hawkeye::replacement_cache_fill(uint64_t triggering_cpu, size_t set, size_t way, champsim::address full_addr, champsim::address ip,
+                                     champsim::address victim_addr, access_type type)
+{
+  // impl_replacement_cache_fill(fill.cpu, get_set_index(fill.address), way_idx, module_address(fill), fill.ip, evicting_address, fill.type);
+  // So Cache miss happened, replace with new block
+  Classification cls;
+
+  // get prediction from predictor
+  bool _pred = predictor.predict(ip.to<uint64_t>());
+  cls = _pred ? Classification::CACHE_FRIENDLY : Classification::CACHE_AVERSE;
+
+  // Update the RRPV
+  ::update_rrpv(rrpv[set], static_cast<std::size_t>(way), cls, false);
+}
+
+void hawkeye::update_replacement_state(uint64_t triggering_cpu, size_t set, size_t way, champsim::address full_addr, champsim::address ip,
+                                       champsim::address victim_addr, access_type type, bool hit)
+{
+
+  // get cache block of the previous address
+  auto block = champsim::block_number{full_addr}.to<uint64_t>();
+
+  if (hit && access_type{type} != access_type::WRITE) // Skip this for writeback hits
+  {
+    return;
+  }
+  // get the optgen cache hit/miss
+  bool optgen_hit = optgen.access(set, block);
+
+  // train the predictor
+  predictor.train(ip.to<uint64_t>(), optgen_hit);
+
+  // if it misses, it will automatically go to replacement_cache_fill
+
+  if (hit) {
+    // update the rrpv for a hit = true
+    bool _pred = predictor.predict(ip.to<uint64_t>());
+    Classification cls = _pred ? Classification::CACHE_FRIENDLY : Classification::CACHE_AVERSE;
+    ::update_rrpv(rrpv[set], static_cast<std::size_t>(way), cls, true);
+  }
+}

@@ -25,6 +25,7 @@ bool OPTgen::access(std::size_t set_idx, uint64_t address)
   // time can be >= 8W, but steps should be capped at 8W
   size_t steps = std::min(current_time, history_length);
 
+  // find the previous access
   for (size_t s = 1; s <= steps; ++s) {
     size_t pos = (current_time - s) % history_length;
     // If any entry >= 8W, miss, else hit

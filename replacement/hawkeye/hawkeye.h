@@ -20,6 +20,24 @@ struct hawkeye : public champsim::modules::replacement {
   // replacement_cache_fill (args);
   // update_replacement_state (args);
 
+  int NUM_WAYS;
+  vector<vector<int>> rrpv; // RRPV values = 7 since initially any line can be evicted
+  
+  HawkeyePredictor predictor; // Predictor instance
+  OPTgen optgen; // OPTgen instance
+
+public:
   explicit hawkeye(CACHE* cache);
+  
+  hawkeye(CACHE* cache, size_t sets, size_t ways); 
+
+  // constructors similar to lru file but with ours data type
+  long find_victim(uint64_t triggering_cpu, uint64_t instr_id, size_t set, const champsim::cache_block* current_set, champsim::address ip, champsim::address full_addr, access_type type);
+
+  void replacement_cache_fill(uint64_t triggering_cpu, size_t set, size_t way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr, access_type type);
+
+  void update_replacement_state(uint64_t triggering_cpu, size_t set, size_t way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr, access_type type, bool hit);
+
 };
+
 #endif
