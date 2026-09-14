@@ -17,6 +17,10 @@ public:
   // Processes one access to `address`, mapped to set `set_idx`, per Section 3.1.
   bool access(std::size_t set_idx, uint64_t address);
 
+  // accessors so callers can reuse this history instead of duplicating it
+  size_t current_time(std::size_t set_idx) const;
+  size_t last_distance(std::size_t set_idx) const;
+
 private:
   size_t capacity;       // W, the cache associativity
   size_t history_length; // length of history tracked per set = 8W
@@ -24,6 +28,7 @@ private:
   vector<vector<size_t>> occupancy_vecs; // occupancy vectors, one per set
   vector<vector<uint64_t>> access_seqs;  // address accessed at each step, one ring per set
   vector<size_t> current_times;          // accesses seen so far, one per set
+  vector<size_t> last_distances;         // steps back to the previous access, 0 if none
 };
 
 #endif

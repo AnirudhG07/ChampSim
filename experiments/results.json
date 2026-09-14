@@ -1,0 +1,326 @@
+{
+  "wb0_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943622,
+    "hit": 528652,
+    "load_hit": 24761,
+    "load_miss_rate": 97.95388155964781,
+    "minutes": 10.079892599582672,
+    "miss": 1414970,
+    "miss_rate": 72.8006783211962
+  },
+  "wb0_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196047,
+    "load_hit": 4546,
+    "load_miss_rate": 38.00627301240966,
+    "minutes": 6.537939417362213,
+    "miss": 69753,
+    "miss_rate": 26.242663656884876
+  },
+  "wb0_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943664,
+    "hit": 521028,
+    "load_hit": 29054,
+    "load_miss_rate": 97.59918226432463,
+    "minutes": 9.955413464705149,
+    "miss": 1422636,
+    "miss_rate": 73.19351492850616
+  },
+  "wb0_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265854,
+    "hit": 197335,
+    "load_hit": 3991,
+    "load_miss_rate": 45.589638718473076,
+    "minutes": 6.510127957661947,
+    "miss": 68519,
+    "miss_rate": 25.773168731709887
+  },
+  "wb1_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943713,
+    "hit": 529827,
+    "load_hit": 25199,
+    "load_miss_rate": 97.91776325846624,
+    "minutes": 10.026366225878398,
+    "miss": 1413886,
+    "miss_rate": 72.74150041698543
+  },
+  "wb1_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196068,
+    "load_hit": 4545,
+    "load_miss_rate": 38.019909995908904,
+    "minutes": 6.560066648324331,
+    "miss": 69732,
+    "miss_rate": 26.23476297968397
+  },
+  "wb1_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943637,
+    "hit": 523175,
+    "load_hit": 29309,
+    "load_miss_rate": 97.57803881385135,
+    "minutes": 9.886916414896648,
+    "miss": 1420462,
+    "miss_rate": 73.08267953326676
+  },
+  "wb1_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265799,
+    "hit": 197899,
+    "load_hit": 4023,
+    "load_miss_rate": 45.093489832127744,
+    "minutes": 6.662437025705973,
+    "miss": 67900,
+    "miss_rate": 25.54561905801
+  },
+  "wb2_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943651,
+    "hit": 530883,
+    "load_hit": 25733,
+    "load_miss_rate": 97.87357642085222,
+    "minutes": 10.050948441028595,
+    "miss": 1412768,
+    "miss_rate": 72.68630016396976
+  },
+  "wb2_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196073,
+    "load_hit": 4544,
+    "load_miss_rate": 38.03354697940816,
+    "minutes": 6.568473486105601,
+    "miss": 69727,
+    "miss_rate": 26.23288186606471
+  },
+  "wb2_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943687,
+    "hit": 523156,
+    "load_hit": 30145,
+    "load_miss_rate": 97.50901942378152,
+    "minutes": 9.841388014952342,
+    "miss": 1420531,
+    "miss_rate": 73.08434948631132
+  },
+  "wb2_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265845,
+    "hit": 198477,
+    "load_hit": 4057,
+    "load_miss_rate": 44.71245571000273,
+    "minutes": 6.452561565240225,
+    "miss": 67368,
+    "miss_rate": 25.341082209558202
+  },
+  "wb3_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943641,
+    "hit": 531057,
+    "load_hit": 26351,
+    "load_miss_rate": 97.82253013222979,
+    "minutes": 10.368207395076752,
+    "miss": 1412584,
+    "miss_rate": 72.67720736494033
+  },
+  "wb3_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196127,
+    "load_hit": 4546,
+    "load_miss_rate": 38.00627301240966,
+    "minutes": 6.726769475142161,
+    "miss": 69673,
+    "miss_rate": 26.212565838976673
+  },
+  "wb3_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943664,
+    "hit": 524973,
+    "load_hit": 32571,
+    "load_miss_rate": 97.30854438616947,
+    "minutes": 9.485699502627055,
+    "miss": 1418691,
+    "miss_rate": 72.99054774899365
+  },
+  "wb3_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265799,
+    "hit": 199991,
+    "load_hit": 4116,
+    "load_miss_rate": 43.877829288246524,
+    "minutes": 6.417628554503123,
+    "miss": 65808,
+    "miss_rate": 24.758558158608572
+  },
+  "wb4_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943658,
+    "hit": 530864,
+    "load_hit": 26540,
+    "load_miss_rate": 97.8069414352552,
+    "minutes": 10.019004400571188,
+    "miss": 1412794,
+    "miss_rate": 72.68737607130473
+  },
+  "wb4_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196322,
+    "load_hit": 4553,
+    "load_miss_rate": 37.910814127914904,
+    "minutes": 6.582749632994334,
+    "miss": 69478,
+    "miss_rate": 26.139202407825433
+  },
+  "wb4_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943556,
+    "hit": 528708,
+    "load_hit": 34163,
+    "load_miss_rate": 97.17689388085985,
+    "minutes": 9.404023806254068,
+    "miss": 1414848,
+    "miss_rate": 72.79687335996493
+  },
+  "wb4_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 201561,
+    "load_hit": 4129,
+    "load_miss_rate": 43.67753376074205,
+    "minutes": 6.373567986488342,
+    "miss": 64239,
+    "miss_rate": 24.168171557562076
+  },
+  "wb5_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943620,
+    "hit": 535851,
+    "load_hit": 27168,
+    "load_miss_rate": 97.75496678891167,
+    "minutes": 9.926905047893523,
+    "miss": 1407769,
+    "miss_rate": 72.4302590012451
+  },
+  "wb5_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196584,
+    "load_hit": 4562,
+    "load_miss_rate": 37.78808127642166,
+    "minutes": 6.501154283682506,
+    "miss": 69216,
+    "miss_rate": 26.040632054176072
+  },
+  "wb5_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943657,
+    "hit": 530785,
+    "load_hit": 35450,
+    "load_miss_rate": 97.07064497043376,
+    "minutes": 9.034514542420705,
+    "miss": 1412872,
+    "miss_rate": 72.6914265222722
+  },
+  "wb5_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 204503,
+    "load_hit": 4314,
+    "load_miss_rate": 41.13794514940647,
+    "minutes": 6.050030489762624,
+    "miss": 61297,
+    "miss_rate": 23.06132430398796
+  },
+  "wb6_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943620,
+    "hit": 532718,
+    "load_hit": 27514,
+    "load_miss_rate": 97.72634306817253,
+    "minutes": 9.310000518957773,
+    "miss": 1410902,
+    "miss_rate": 72.59145306181249
+  },
+  "wb6_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265800,
+    "hit": 196808,
+    "load_hit": 4560,
+    "load_miss_rate": 37.81535524342016,
+    "minutes": 6.0896953026453655,
+    "miss": 68992,
+    "miss_rate": 25.95635816403311
+  },
+  "wb6_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943660,
+    "hit": 536299,
+    "load_hit": 43052,
+    "load_miss_rate": 96.44244213142768,
+    "minutes": 9.169052199522655,
+    "miss": 1407361,
+    "miss_rate": 72.40777708035355
+  },
+  "wb6_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265798,
+    "hit": 206129,
+    "load_hit": 4290,
+    "load_miss_rate": 41.50531769839105,
+    "minutes": 6.355727195739746,
+    "miss": 59669,
+    "miss_rate": 22.449002626054373
+  },
+  "wb7_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943749,
+    "hit": 541211,
+    "load_hit": 33080,
+    "load_miss_rate": 97.26655169877863,
+    "minutes": 9.398444521427155,
+    "miss": 1402538,
+    "miss_rate": 72.15633294216485
+  },
+  "wb7_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265799,
+    "hit": 198762,
+    "load_hit": 4586,
+    "load_miss_rate": 37.45226404800873,
+    "minutes": 6.1300095319747925,
+    "miss": 67037,
+    "miss_rate": 25.220937625799948
+  },
+  "wb7_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943663,
+    "hit": 536906,
+    "load_hit": 43514,
+    "load_miss_rate": 96.40430386169204,
+    "minutes": 8.984703036149343,
+    "miss": 1406757,
+    "miss_rate": 72.3765899747024
+  },
+  "wb7_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265798,
+    "hit": 206126,
+    "load_hit": 4290,
+    "load_miss_rate": 41.50531769839105,
+    "minutes": 6.094125354290009,
+    "miss": 59672,
+    "miss_rate": 22.450131302718606
+  },
+  "wbnone_assignment|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943749,
+    "hit": 541211,
+    "load_hit": 33080,
+    "load_miss_rate": 97.26655169877863,
+    "minutes": 9.448053205013276,
+    "miss": 1402538,
+    "miss_rate": 72.15633294216485
+  },
+  "wbnone_assignment|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265799,
+    "hit": 198762,
+    "load_hit": 4586,
+    "load_miss_rate": 37.45226404800873,
+    "minutes": 6.229767942428589,
+    "miss": 67037,
+    "miss_rate": 25.220937625799948
+  },
+  "wbnone_paper|429.mcf-22B.champsimtrace.xz": {
+    "access": 1943663,
+    "hit": 536906,
+    "load_hit": 43514,
+    "load_miss_rate": 96.40430386169204,
+    "minutes": 9.204818288485209,
+    "miss": 1406757,
+    "miss_rate": 72.3765899747024
+  },
+  "wbnone_paper|456.hmmer-191B.champsimtrace.xz": {
+    "access": 265798,
+    "hit": 206126,
+    "load_hit": 4290,
+    "load_miss_rate": 41.50531769839105,
+    "minutes": 6.072115763028463,
+    "miss": 59672,
+    "miss_rate": 22.450131302718606
+  }
+}

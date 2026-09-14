@@ -35,3 +35,10 @@ compile_commands.json
 /.build.lock
 /.cache.lock
 /traces
+/report/report.aux
+/report/report.fdb_latexmk
+/report/report.fls
+/report/report.log
+/report/report.out
+/report/report.synctex.gz
+/experiments/logs

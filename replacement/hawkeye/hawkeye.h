@@ -26,10 +26,8 @@ struct hawkeye : public champsim::modules::replacement {
   HawkeyePredictor predictor; // Predictor instance (constructed with 8192, 3 in the ctor init list)
   OPTgen optgen;              // OPTgen instance
 
-  size_t history_len;                // 8W, same horizon OPTgen uses
-  vector<vector<uint64_t>> addr_seq; // block address accessed at each step
-  vector<vector<uint64_t>> pc_seq;   // PC that did it
-  vector<size_t> pc_time;            // accesses seen so far, one per set
+  size_t history_len;              // 8W, same horizon OPTgen uses
+  vector<vector<uint64_t>> pc_seq; // PC at each step, indexed by OPTgen's clock
 
 public:
   explicit hawkeye(CACHE* cache);
