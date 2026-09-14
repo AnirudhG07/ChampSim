@@ -9,7 +9,9 @@
 
 hawkeye::hawkeye(CACHE* cache) : hawkeye(cache, cache->NUM_SET, cache->NUM_WAY) {}
 
-hawkeye::hawkeye(CACHE* cache, size_t sets, size_t ways) : replacement(cache), NUM_WAYS(ways), rrpv(sets, vector<int>(ways, 7)), predictor(), optgen(sets, ways)
+hawkeye::hawkeye(CACHE* cache, size_t sets, size_t ways)
+    : replacement(cache), NUM_WAYS(ways), rrpv(sets, vector<int>(ways, 7)), predictor(8192, 3), optgen(sets, ways), history_len(ways * 8),
+      addr_seq(sets, vector<uint64_t>(ways * 8, 0)), pc_seq(sets, vector<uint64_t>(ways * 8, 0)), pc_time(sets, 0)
 {
 }
 
@@ -42,6 +44,11 @@ void hawkeye::replacement_cache_fill(uint64_t triggering_cpu, size_t set, size_t
   // So Cache miss happened, replace with new block
   Classification cls;
 
+  if (access_type{type} == access_type::WRITE) // for writeback hits
+  {
+    return;
+  }
+
   // get prediction from predictor
   bool _pred = predictor.predict(ip.to<uint64_t>());
   cls = _pred ? Classification::CACHE_FRIENDLY : Classification::CACHE_AVERSE;
@@ -57,15 +64,38 @@ void hawkeye::update_replacement_state(uint64_t triggering_cpu, size_t set, size
   // get cache block of the previous address
   auto block = champsim::block_number{full_addr}.to<uint64_t>();
 
-  if (hit && access_type{type} == access_type::WRITE) // Skip this for writeback hits
+  if (access_type{type} == access_type::WRITE) // for writeback hits
   {
     return;
   }
+
+  size_t t = pc_time[set];
+  size_t steps = std::min(t, history_len);
+  bool found_prev = false;
+  uint64_t prev_pc = 0;
+
+  for (size_t s = 1; s <= steps; ++s) {
+    size_t i = (t - s) % history_len;
+    if (addr_seq[set][i] == block) {
+      prev_pc = pc_seq[set][i];
+      found_prev = true;
+      break;
+    }
+  }
+
   // get the optgen cache hit/miss
   bool optgen_hit = optgen.access(set, block);
 
-  // train the predictor
-  predictor.train(ip.to<uint64_t>(), optgen_hit);
+  // train the PC that last accessed this block, not the current one. If it is
+  // not in the window there is nothing to attribute the verdict to.
+  if (found_prev) {
+    predictor.train(prev_pc, optgen_hit);
+  }
+
+  // record this access at the current step
+  addr_seq[set][t % history_len] = block;
+  pc_seq[set][t % history_len] = ip.to<uint64_t>();
+  pc_time[set] = t + 1;
 
   // if it misses, it will automatically go to replacement_cache_fill
 

@@ -31,3 +31,7 @@ compile_commands.json
 .vscode/
 **/.DS_Store
 /traces/400.perlbench-41B.champsimtrace.xz
+/logs
+/.build.lock
+/.cache.lock
+/traces
