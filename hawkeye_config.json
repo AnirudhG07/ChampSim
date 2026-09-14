@@ -1,5 +1,4 @@
 {
-    "LLC": {
-        "replacement": "hawkeye"
-    }
+  "executable_name": "champsim_hawkeye",
+  "LLC": { "replacement": "hawkeye" }
 }

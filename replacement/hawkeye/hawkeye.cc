@@ -57,7 +57,7 @@ void hawkeye::update_replacement_state(uint64_t triggering_cpu, size_t set, size
   // get cache block of the previous address
   auto block = champsim::block_number{full_addr}.to<uint64_t>();
 
-  if (hit && access_type{type} != access_type::WRITE) // Skip this for writeback hits
+  if (hit && access_type{type} == access_type::WRITE) // Skip this for writeback hits
   {
     return;
   }
