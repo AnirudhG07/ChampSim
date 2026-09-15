@@ -1,8 +1,0 @@
-{
-  "executable_name": "champsim_lru",
-  "LLC": {
-    "replacement": "lru",
-    "sets": 8192,
-    "ways": 4
-  }
-}

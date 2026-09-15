@@ -46,7 +46,7 @@ void hawkeye::replacement_cache_fill(uint64_t triggering_cpu, size_t set, size_t
 
   if (access_type{type} == access_type::WRITE) // for writeback hits
   {
-    rrpv[set][way] = 7;
+    // rrpv[set][way] = 7; behavior is same without it too
     return;
   }
 

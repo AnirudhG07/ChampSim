@@ -1,53 +1,53 @@
 {
   "hawkeye|429.mcf-22B.champsimtrace.xz|2048x16": {
-    "access": 1943652,
-    "hit": 435899,
-    "load_access": 1210162,
-    "load_hit": 33149,
-    "load_miss": 1177013,
-    "load_miss_rate": 97.26077996169109,
-    "miss": 1507753,
-    "miss_rate": 77.57319725959174
+    "access": 1943749,
+    "hit": 541211,
+    "load_access": 1210193,
+    "load_hit": 33080,
+    "load_miss": 1177113,
+    "load_miss_rate": 97.26655169877863,
+    "miss": 1402538,
+    "miss_rate": 72.15633294216485
   },
   "hawkeye|456.hmmer-191B.champsimtrace.xz|2048x16": {
-    "access": 265800,
-    "hit": 196808,
-    "load_access": 7333,
-    "load_hit": 4560,
-    "load_miss": 2773,
-    "load_miss_rate": 37.81535524342016,
-    "miss": 68992,
-    "miss_rate": 25.95635816403311
+    "access": 265799,
+    "hit": 198762,
+    "load_access": 7332,
+    "load_hit": 4586,
+    "load_miss": 2746,
+    "load_miss_rate": 37.45226404800873,
+    "miss": 67037,
+    "miss_rate": 25.220937625799948
   },
   "hawkeye|456.hmmer-191B.champsimtrace.xz|4096x8": {
     "access": 265799,
-    "hit": 194632,
+    "hit": 196197,
     "load_access": 7333,
-    "load_hit": 4564,
-    "load_miss": 2769,
-    "load_miss_rate": 37.76080730942316,
-    "miss": 71167,
-    "miss_rate": 26.77474332108097
+    "load_hit": 4633,
+    "load_miss": 2700,
+    "load_miss_rate": 36.81985544797491,
+    "miss": 69602,
+    "miss_rate": 26.18595254308707
   },
   "hawkeye|456.hmmer-191B.champsimtrace.xz|8192x4": {
-    "access": 265849,
-    "hit": 179192,
+    "access": 265851,
+    "hit": 180956,
     "load_access": 7339,
-    "load_hit": 4396,
-    "load_miss": 2943,
-    "load_miss_rate": 40.100831175909526,
-    "miss": 86657,
-    "miss_rate": 32.596323476860924
+    "load_hit": 4411,
+    "load_miss": 2928,
+    "load_miss_rate": 39.896443657174004,
+    "miss": 84895,
+    "miss_rate": 31.93330098438599
   },
   "hawkeye|473.astar-42B.champsimtrace.xz|2048x16": {
     "access": 655196,
-    "hit": 528003,
+    "hit": 528567,
     "load_access": 475532,
-    "load_hit": 350153,
-    "load_miss": 125379,
-    "load_miss_rate": 26.3660489725192,
-    "miss": 127193,
-    "miss_rate": 19.41296955414868
+    "load_hit": 350279,
+    "load_miss": 125253,
+    "load_miss_rate": 26.339552332966026,
+    "miss": 126629,
+    "miss_rate": 19.326888442542383
   },
   "lru|429.mcf-22B.champsimtrace.xz|2048x16": {
     "access": 1943704,

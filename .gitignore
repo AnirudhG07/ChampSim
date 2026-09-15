@@ -42,3 +42,8 @@ compile_commands.json
 /report/report.out
 /report/report.synctex.gz
 /experiments/logs
+/plots_lru_config.json
+/plots_hawkeye_config.json
+/hawkeye_tests/optgen_test
+/hawkeye_tests/predictor_test
+/hawkeye_tests/rrip_test

@@ -16,7 +16,6 @@ matplotlib.use("Agg")  # save to file; no display needed
 import matplotlib.pyplot as plt
 import numpy as np
 
-# ----------------------------------------------------------------- parameters
 POLICIES = ["lru", "hawkeye"]
 
 WARMUP = "20000000"
@@ -38,6 +37,8 @@ BUILD_LOCK = ".build.lock"
 CACHE_LOCK = ".cache.lock"
 
 
+# Note, this is just a plotting file and running commands in parallel since the simulations are independent and take a while. This has been created with help of LLMs.
+
 @contextmanager
 def file_lock(path):
     """Cross-process mutex, so `-p 1` and `-p 2` can run at the same time."""
@@ -55,7 +56,6 @@ def binary_for(policy, sets, ways):
     return f"bin/champsim_{policy}_{sets}x{ways}"
 
 
-# ---------------------------------------------------------------------- cache
 def load_cache():
     if os.path.exists(CACHE_FILE):
         with open(CACHE_FILE) as f:
@@ -81,7 +81,6 @@ def key_for(policy, trace, sets, ways):
     return f"{policy}|{trace}|{sets}x{ways}"
 
 
-# ------------------------------------------------------------- build and run
 def write_configs(sets, ways):
     """One JSON per policy, each with its own executable_name."""
     for policy in POLICIES:
@@ -89,7 +88,7 @@ def write_configs(sets, ways):
             "executable_name": f"champsim_{policy}",
             "LLC": {"replacement": policy, "sets": sets, "ways": ways},
         }
-        with open(f"{policy}_config.json", "w") as f:
+        with open(f"plots_{policy}_config.json", "w") as f:
             json.dump(cfg, f, indent=2)
 
 
@@ -106,7 +105,7 @@ def configure_and_build(sets, ways):
         print(f"  configuring + building for {sets} sets x {ways} ways ...", flush=True)
 
         cfg = subprocess.run(
-            ["./config.sh", "--join", "chain", "lru_config.json", "hawkeye_config.json"],
+            ["./config.sh", "--join", "chain", "plots_lru_config.json", "plots_hawkeye_config.json"],
             capture_output=True, text=True,
         )
         if cfg.returncode != 0:
@@ -212,7 +211,6 @@ def ensure(cache, policy, trace, sets, ways, dry_run=False, force=False):
     return stats
 
 
-# -------------------------------------------------------------------- plot 1
 def plot_1(cache):
     ways = [w for _, w in PLOT1_GEOMETRIES]
     fig, ax = plt.subplots(figsize=(7, 4.5))
@@ -236,7 +234,6 @@ def plot_1(cache):
     print("wrote plot_1.png")
 
 
-# -------------------------------------------------------------------- plot 2
 def plot_2(cache):
     names, reductions = [], []
     for trace in PLOT2_TRACES:
@@ -263,7 +260,6 @@ def plot_2(cache):
     print("wrote plot_2.png")
 
 
-# -------------------------------------------------------------------- summary
 def summary(cache):
     print("\n=== Plot 1: 456.hmmer, 2MB LLC ===")
     print(f"  {'ways':<8}{'sets':<8}{'LRU':>10}{'Hawkeye':>12}{'reduction':>12}")
@@ -285,7 +281,6 @@ def summary(cache):
             print(f"  {name:<14}{l['miss_rate']:>9.2f}%{h['miss_rate']:>11.2f}%{red:>11.2f}%")
 
 
-# ----------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -312,7 +307,6 @@ def main():
     cache = load_cache()
 
     if not args.plot_only:
-        # ---- 1. work out every (policy, trace, sets, ways) this invocation owns
         plan = []
         if do1:
             for sets, ways in PLOT1_GEOMETRIES:
@@ -336,12 +330,9 @@ def main():
         if not plan:
             print("nothing to run; every result is already cached")
         else:
-            # ---- 2. build each needed geometry once, serially (config.sh and make
-            #         share .csconfig, so these cannot overlap)
             for sets, ways in sorted({(s, w) for _, _, s, w in plan}):
                 configure_and_build(sets, ways)
 
-            # ---- 3. run the simulations concurrently
             jobs = max(1, args.jobs)
             print(f"\nrunning {len(plan)} simulation(s), {jobs} at a time\n", flush=True)
             started = time.time()
